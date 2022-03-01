@@ -91,6 +91,7 @@ class MainViewModel {
             logcatProcess.listener {
                 fos?.write(it.toByteArray())
                 fos?.write("\n".toByteArray())
+                fos?.flush()
                 viewModelScope?.launch {
                     _logList.emit(_logList.value + it)
                 }
